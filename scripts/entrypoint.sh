@@ -9,8 +9,10 @@
 
 ## Exec shell
 set +xe
-echo "## Building Project ##"
+echo "## Running Docker Entrypoint ##"
 cd test/build && cmake .. && make \
                           && make report \
                           && make coverage \
                           && make specs
+# uncomment this to make docker run bash shell after execution, (debugging)
+# bash
