@@ -4,7 +4,7 @@ FILE := $(lastword $(MAKEFILE_LIST))
 TAG := foobar-template
 REPO := foobar-ubuntu-20.04
 NAME := foobar-example
-VIVADO := /home/duclos/Programs/Xilinx
+REGEX := foobar-example
 DISPLAY := ${DISPLAY}
 XAUTH := ${HOME}/.Xauthority
 
@@ -45,7 +45,6 @@ run: $(if $(call exist-docker-image),,build)
 				   --network=host \
 				   -e DISPLAY=${DISPLAY} \
 				   -v ${XAUTH}:/root/.Xauthority \
-				   -v ${VIVADO}:/opt/Xilinx \
 				   --detach-keys="ctrl-@" \
 				   -it ${TAG}:${REPO}; \
 	fi
@@ -62,7 +61,7 @@ clean:
 clean-img:
 	@echo "## Removing Docker Image ##"
 	@if [ -n "$(call exist-docker-image)" ]; then \
-		docker rmi $(shell docker images --filter=reference="*foobar*" -q); \
+		docker rmi $(shell docker images --filter=reference="*${REGEX}*" -q); \
 	fi
 
 .PHONY: reset
