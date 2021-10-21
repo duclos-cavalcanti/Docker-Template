@@ -5,10 +5,9 @@ Example project to use dockers to run a project/tool in a contained environment.
 Contains:
 - `Makefile`
 - `Dockerfile`
-- Project (FuSa Validator)
 
 Here there is a template on how to build a **minimal** `Ubuntu 20.04` Docker that contains
-only the necessary packages to build, run and deploy the project in question.
+only the necessary packages to build, run and deploy the example project.
 
 ## Components
 
